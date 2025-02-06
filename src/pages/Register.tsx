@@ -8,12 +8,10 @@ import { toast } from "react-toastify";
 import { decodeToken } from "../utils/DecodeToken";
 import { FormContainer } from "../components/ui/form/FormContainer";
 import { FormInput } from "../components/ui/form/FormInput";
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa6";
-import Title from "antd/es/typography/Title";
 
-const Login = () => {
+const Register = () => {
 	const dispatch = useAppDispatch();
+	const { Title } = Typography;
 
 	const [login] = useLoginMutation();
 
@@ -44,12 +42,21 @@ const Login = () => {
 
 	return (
 		<>
-			
-			<div className=" flex flex-col justify-center items-center gap-9 " style={{ height: "100vh" }}>
-			<Title level={5} color="gray" className="mt-1 font-normal">
-						Please Enter your email and password to continure.
+			<div
+				className=" flex flex-col justify-center items-center gap-9 "
+				style={{ height: "100vh" }}
+			>
+				<div>
+					<Title level={5} color="gray" className="mt-1 font-normal">
+						Please Enter your details to register.
 					</Title>
+				</div>
 				<FormContainer onSubmit={onSubmit} defaultValues={defaultValue}>
+					<FormInput
+						type="text"
+						identifier="your name"
+						placeholder="Enter your Name"
+					/>
 					<FormInput
 						type="text"
 						identifier="your email"
@@ -64,42 +71,23 @@ const Login = () => {
 
 					<button
 						type="submit"
-						className="mt-6 bg-gradient-to-r from-[#6dc234] to-[#6dc234ad] w-full py-3 rounded-lg font-bold text-white text-xl"
+						className="mt-6 bg-gradient-to-r from-[#6dc234] to-[#6dc234ad] w-full py-3 rounded-lg font-bold text-white text-xl cursor-pointer"
 					>
-						sign In
+						Sign Up
 					</button>
 					<Typography color="gray" className="!mt-4 !text-center !font-normal">
-						{`Don't have an account`}?{" "}
+						Already have an account?{" "}
 						<Link
-							to={"/register"}
-							className="!font-medium !text-[#ff5d64ed] !hover:underline"
+							to={"/login"}
+							className="!font-medium !text-[#ff5d64ed] !hover:underline "
 						>
-							Create an account
+							Sign In
 						</Link>
 					</Typography>
-					<div className="inline-flex items-center justify-center w-full mt-2">
-						<hr className="w-full h-px my-8 bg-[#AAAAAA] border-0 " />
-						<span className="absolute px-3 font-medium text-xl -translate-x-1/2 bg-white left-1/2 ">
-							or
-						</span>
-					</div>
-
-					<div className=" flex gap-4 border-2 border-[#4c4a4aae] items-center py-3 rounded-full justify-center cursor-pointer">
-						<FcGoogle className=" text-3xl" />
-						<p className=" text-lg font-medium text-[#151515ca]">
-							Continue with Google
-						</p>
-					</div>
-					<div className=" cursor-pointer flex gap-4 border-2 border-[#4c4a4aae] items-center py-3 rounded-full justify-center mt-6">
-						<FaGithub className=" text-3xl" />
-						<p className=" text-lg font-medium text-[#151515ca]">
-							Continue with GitHub
-						</p>
-					</div>
 				</FormContainer>
 			</div>
 		</>
 	);
 };
 
-export default Login;
+export default Register;
