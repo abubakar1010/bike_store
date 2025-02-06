@@ -36,7 +36,7 @@ export const FormContainer = ({
 	const methods = useForm(formConfig);
 	return (
 		<FormProvider {...methods}>
-			<Form layout="vertical" variant={'filled'} onFinish={methods.handleSubmit(onSubmit)}>{children}</Form>
+			<Form layout="vertical" variant={'filled'} onFinish={methods.handleSubmit(onSubmit)} className=" w-[400px]" >{children}</Form>
 		</FormProvider>
 	);
 };

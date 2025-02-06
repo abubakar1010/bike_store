@@ -17,7 +17,7 @@ export const FormInput = ({
 				name={identifier}
 				render={({ field, fieldState: {error} }) => (
 					<Form.Item label={label}>
-						<Input {...field} size="large" type={type} placeholder={placeholder} />
+						<Input {...field} size="large" type={type} placeholder={placeholder} className="" />
 						{error && <small style={{color: "red"}}>{error.message}</small>}
 					</Form.Item>
 				)}
