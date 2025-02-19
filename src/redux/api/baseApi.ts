@@ -11,7 +11,7 @@ import { logout } from "../features/auth/authSlice";
 import { RootState } from "../store/store";
 
 const baseQuery = fetchBaseQuery({
-	baseUrl: "http://localhost:9000/api",
+	baseUrl: "https://bike-store-server-ebon.vercel.app/",
 	credentials: "include",
 	prepareHeaders: (headers, { getState }) => {
 		const token = (getState() as RootState).auth.token;
@@ -21,7 +21,6 @@ const baseQuery = fetchBaseQuery({
 		}
 		return headers;
 	},
-	
 });
 
 const baseQueryWithAuth: BaseQueryFn<
@@ -31,7 +30,7 @@ const baseQueryWithAuth: BaseQueryFn<
 > = async (args, api, extraOption): Promise<any> => {
 	const response = await baseQuery(args, api, extraOption);
 	if (response.error?.status === 401) {
-			api.dispatch(logout());
+		api.dispatch(logout());
 	}
 	return response;
 };
@@ -39,5 +38,6 @@ const baseQueryWithAuth: BaseQueryFn<
 export const baseApi = createApi({
 	reducerPath: "baseApi",
 	baseQuery: baseQueryWithAuth,
+	tagTypes: ["products", "orders", "users"],
 	endpoints: () => ({}),
 });
