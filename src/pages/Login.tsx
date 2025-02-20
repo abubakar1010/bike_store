@@ -25,22 +25,22 @@ const Login = () => {
 				email: data.email,
 				password: data.password,
 			};
+			console.log(credential)
 			const res = await login(credential).unwrap();
+
+			console.log(res)
 
 			const user = decodeToken(res.data.accessToken) as TUSer;
 
 			dispatch(setUser({ user, token: res.data.accessToken }));
 			toast.success("User login successful");
-			navigate(`/${user.role}/dashboard`);
+			navigate(`/`);
 		} catch (err: unknown) {
-			toast.error(`Oops!Something went wrong.${err}`);
+			// console.log(err)
+			toast.error(`${err?.data?.message}`);
 		}
 	};
 
-	const defaultValue = {
-		email: "rayhan@gmail.com",
-		password: "987654321",
-	};
 
 	return (
 		<>
@@ -49,10 +49,10 @@ const Login = () => {
 			<Title level={5} color="gray" className="mt-1 font-normal">
 						Please Enter your email and password to continure.
 					</Title>
-				<FormContainer onSubmit={onSubmit} defaultValues={defaultValue}>
+				<FormContainer onSubmit={onSubmit} >
 					<FormInput
 						type="text"
-						identifier="your email"
+						identifier="email"
 						placeholder="Enter your Email"
 					/>
 

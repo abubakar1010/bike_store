@@ -1,6 +1,6 @@
 import { Typography } from "antd";
 import { FieldValues } from "react-hook-form";
-import { useLoginMutation } from "../redux/features/auth/authApi";
+import { useCreateUserMutation } from "../redux/features/auth/authApi";
 import { setUser, TUSer } from "../redux/features/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../redux/store/hook";
@@ -13,32 +13,27 @@ const Register = () => {
 	const dispatch = useAppDispatch();
 	const { Title } = Typography;
 
-	const [login] = useLoginMutation();
+	const [createUser] = useCreateUserMutation();
 
 	const navigate = useNavigate();
 
 	const onSubmit = async (data: FieldValues) => {
 		try {
 			const credential = {
+				name: data.name,
 				email: data.email,
 				password: data.password,
 			};
-			const res = await login(credential).unwrap();
+			const res = await createUser(credential).unwrap();
 
-			const user = decodeToken(res.data.accessToken) as TUSer;
-
-			dispatch(setUser({ user, token: res.data.accessToken }));
-			toast.success("User login successful");
-			navigate(`/${user.role}/dashboard`);
+			toast.success(`${res.message}`);
+			navigate(`/login`);
 		} catch (err: unknown) {
-			toast.error(`Oops!Something went wrong.${err}`);
+			console.log(err)
+			toast.error(`${err.data.message}`);
 		}
 	};
 
-	const defaultValue = {
-		email: "rayhan@gmail.com",
-		password: "987654321",
-	};
 
 	return (
 		<>
@@ -51,15 +46,15 @@ const Register = () => {
 						Please Enter your details to register.
 					</Title>
 				</div>
-				<FormContainer onSubmit={onSubmit} defaultValues={defaultValue}>
+				<FormContainer onSubmit={onSubmit} >
 					<FormInput
 						type="text"
-						identifier="your name"
+						identifier="name"
 						placeholder="Enter your Name"
 					/>
 					<FormInput
 						type="text"
-						identifier="your email"
+						identifier="email"
 						placeholder="Enter your Email"
 					/>
 
