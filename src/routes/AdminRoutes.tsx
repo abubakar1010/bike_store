@@ -1,7 +1,6 @@
 import AddProduct from "../pages/Dashboard/adminDashboard/AddProductPage";
 import EditProduct from "../pages/Dashboard/adminDashboard/EditProduct";
 import OrdersManagement from "../pages/Dashboard/adminDashboard/OrderManagement";
-import ProductManagementPage from "../pages/Dashboard/adminDashboard/ProductManagement";
 import UserManagement from "../pages/Dashboard/adminDashboard/UserManagement";
 import Dashboard from "../pages/Dashboard/userDashboard/Dashboard";
 
@@ -14,7 +13,7 @@ export const adminPaths = [
 	{
 		name: "manage product",
 		path: "manage-product",
-		element: <ProductManagementPage />,
+		element: <AddProduct />,
 	},
 	{
 		name: "add product",

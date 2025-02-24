@@ -6,7 +6,7 @@ import { authReducer } from "../features/auth/authSlice";
 
 
 const persistConfig = {
-    key: "auth",
+    key: "bike-store-auth",
     storage
 }
 
