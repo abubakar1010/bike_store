@@ -1,17 +1,23 @@
-import { Dashboard } from "../pages/Dashboard/userDashboard/Dashboard";
-import { Orders } from "../pages/Dashboard/userDashboard/Orders";
-
+import MyOrders from "../pages/Dashboard/userDashboard/MyOrders";
+import MyProfile from "../pages/Dashboard/userDashboard/Profile";
+import VerifyOrder from "../pages/VerifyOrder";
 
 export const userPath = [
-    {
-        name: "Dashboard",
-        path: "dashboard",
-        element: <Dashboard />,
-    },
-    {
-        name: "Orders",
-        path: "order",
-        element: <Orders />,
-    },
-    
+	{
+		name: "My Order",
+		path: "my-order",
+		element: <MyOrders />,
+	},
+
+	{
+		name: "Profile",
+		path: "profile",
+		element: <MyProfile />,
+	},
+	{
+		name: "",
+		path: "verify-order",
+		element: <VerifyOrder />,
+	},
+	
 ];

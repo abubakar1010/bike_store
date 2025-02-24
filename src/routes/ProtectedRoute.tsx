@@ -20,7 +20,9 @@ export const ProtectedRoute = ({
 	if (token) user = decodeToken(token);
 
 	if (role !== undefined && role !== user?.role) {
-		dispatch(logout());
+		setTimeout(() => {
+			dispatch(logout());
+		}, 2000);
 	}
 
 	if (!token) return <Navigate to={"/login"} replace />;

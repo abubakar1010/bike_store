@@ -1,32 +1,39 @@
-import { Dashboard } from "../pages/Dashboard/adminDashboard/Dashboard";
-import { Product } from "../pages/Dashboard/adminDashboard/Product";
-import { Users } from "../pages/Dashboard/adminDashboard/Users";
+import AddProduct from "../pages/Dashboard/adminDashboard/AddProductPage";
+import EditProduct from "../pages/Dashboard/adminDashboard/EditProduct";
+import OrdersManagement from "../pages/Dashboard/adminDashboard/OrderManagement";
+import ProductManagementPage from "../pages/Dashboard/adminDashboard/ProductManagement";
+import UserManagement from "../pages/Dashboard/adminDashboard/UserManagement";
+import Dashboard from "../pages/Dashboard/userDashboard/Dashboard";
 
 export const adminPaths = [
 	{
-		name: "Dashboard",
-		path: "dashboard",
-		element: <Dashboard />,
+        name: "Dashboard",
+        path: "dashboard",
+        element: <Dashboard />,
+    },
+	{
+		name: "manage product",
+		path: "manage-product",
+		element: <ProductManagementPage />,
 	},
 	{
-		name: "Product Management",
-		children: [
-			{
-				name: "Product",
-				path: "all-product",
-				element: <Product />,
-			}
-		],
+		name: "add product",
+		path: "add-product",
+		element: <AddProduct />,
 	},
 	{
-		name: "User Management",
-		children: [
-			{
-				name: "Users",
-				path: "user",
-				element: <Users />,
-			}
-		],
+		name: "user management",
+		path: "manage-user",
+		element: <UserManagement />,
 	},
-	
+	{
+		name: "Order Management",
+		path: "order-management",
+		element: <OrdersManagement />,
+	},
+	{
+		name: "",
+		path: "edit-product/:id",
+		element: <EditProduct />,
+	},
 ];
