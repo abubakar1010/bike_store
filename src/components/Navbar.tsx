@@ -2,10 +2,11 @@ import { FaBarsProgress } from "react-icons/fa6";
 import { RxCrossCircled } from "react-icons/rx";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { NavLink, useNavigate } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { Typography } from "antd";
 import { Menu } from "./ui/Menu";
-import { logout } from "../redux/features/auth/authSlice";
+import { logout, selectUser } from "../redux/features/auth/authSlice";
+import { useAppSelector } from "../redux/store/hook";
 
 export const Navbar = ({
 	setCollapsed,
@@ -14,7 +15,9 @@ export const Navbar = ({
 	setCollapsed: (data: boolean) => void;
 	collapsed: boolean;
 }) => {
-	// const [collapsed, setCollapsed] = useState(false);
+	const user = useAppSelector(selectUser);
+
+	console.log(user);
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -41,31 +44,32 @@ export const Navbar = ({
 					Home
 				</NavLink>
 			</Typography>
-			<Typography  className="p-1 font-normal">
+
+			<Typography className="p-1 font-normal">
 				<NavLink
-					to={"/allProduct"}
+					to={"/about"}
 					className={({ isActive }) =>
 						isActive
-							? "!flex !items-center !text-lg !text-[#6dc234] !border-b !py-1 !px-4 !border-[#6dc234] !hover:scale-95 !hover:duration-300 !duration-300 !font-medium"
+							? "!flex !items-center !text-lg !text-[#6dc234] !border-b !py-1 !px-4 !border-[unded-lg !hover:scale-95 !hover:duration-300 !duration-300 !font-medium"
 							: "!flex !items-center !text-lg !text-[#222121] !hover:text-[#6dc234] !hover:text-xl !hover:duration-300 !duration-300 !font-bold"
 					}
 				>
-					All Product
+					About Us
 				</NavLink>
 			</Typography>
-			
-				<Typography className="p-1 font-normal">
-					<NavLink
-						to={"/about"}
-						className={({ isActive }) =>
-							isActive
-								? "!flex !items-center !text-lg !text-[#6dc234] !border-b !py-1 !px-4 !border-[unded-lg !hover:scale-95 !hover:duration-300 !duration-300 !font-medium"
-								: "!flex !items-center !text-lg !text-[#222121] !hover:text-[#6dc234] !hover:text-xl !hover:duration-300 !duration-300 !font-bold"
-						}
-					>
-						About Us
-					</NavLink>
-				</Typography>
+
+			<Typography className="p-1 font-normal">
+				<NavLink
+					to={"/shop"}
+					className={({ isActive }) =>
+						isActive
+							? "!flex !items-center !text-lg !text-[#6dc234] !border-b !py-1 !px-4 !border-[rounded-lg !hover:scale-95 !hover:duration-300 !duration-300 !font-medium"
+							: "!flex !items-center !text-lg !text-[#222121] !hover:text-[#6dc234] !hover:text-xl !hover:duration-300 !duration-300 !font-bold"
+					}
+				>
+					Shop
+				</NavLink>
+			</Typography>
 		</ul>
 	);
 
@@ -92,37 +96,29 @@ export const Navbar = ({
 					</div>
 
 					<div className="flex items-center justify-center gap-4 md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-						{/* <button
-							type="button"
-							className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
-							id="user-menu-button"
-							aria-expanded="true"
-							data-dropdown-toggle="user-dropdown"
-							data-dropdown-placement="bottom"
-						>
-							<img
-								className="w-12 h-12 rounded-full"
-								src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8fHww"
-								alt="user photo"
-							/>
-						</button> */}
-						<Menu />
-						<button
-							className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-6 py-2.5 text-center me-2 mb-2 cursor-pointer "
-							onClick={handleLogout}
-						>
-							Logout
-						</button>
+						{user ? (
+							<>
+								<Menu />
+								<button
+									className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-6 py-2.5 text-center me-2 mb-2 cursor-pointer "
+									onClick={handleLogout}
+								>
+									Logout
+								</button>
+							</>
+						) : (
+							<Link to="/login">
+								<button className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-6 py-2.5 text-center me-2 mb-2 cursor-pointer ">
+									Login
+								</button>
+							</Link>
+						)}
 					</div>
 					<div
 						className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
 						id="navbar-user"
 					>
-						
-							{
-								navList
-							}
-						
+						{navList}
 					</div>
 				</div>
 			</nav>
