@@ -10,19 +10,21 @@ import {
 
 type TFormConfig = {
 	defaultValues?: Record<string, unknown>;
-	resolver?: any
+	resolver?: any;
 };
 
 type TFormProps = {
 	onSubmit: SubmitHandler<FieldValues>;
 	children: ReactNode;
+	admin?: boolean;
 } & TFormConfig;
 
 export const FormContainer = ({
 	onSubmit,
 	children,
 	defaultValues,
-	resolver
+	resolver,
+	admin = false,
 }: TFormProps) => {
 	const formConfig: TFormConfig = {};
 
@@ -35,8 +37,30 @@ export const FormContainer = ({
 
 	const methods = useForm(formConfig);
 	return (
-		<FormProvider {...methods}>
-			<Form layout="vertical" variant={'filled'} onFinish={methods.handleSubmit(onSubmit)} className=" w-[400px]" >{children}</Form>
-		</FormProvider>
+		<>
+			{admin ? (
+				<FormProvider {...methods}>
+					<Form
+						layout="vertical"
+						variant={"filled"}
+						onFinish={methods.handleSubmit(onSubmit)}
+						className=" w-full"
+					>
+						{children}
+					</Form>
+				</FormProvider>
+			) : (
+				<FormProvider {...methods}>
+					<Form
+						layout="vertical"
+						variant={"filled"}
+						onFinish={methods.handleSubmit(onSubmit)}
+						className=" w-[400px]"
+					>
+						{children}
+					</Form>
+				</FormProvider>
+			)}
+		</>
 	);
 };
