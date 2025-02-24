@@ -1,13 +1,13 @@
+import { MainLayout } from "./components/layout/MainLayout"
+
 
 function App() {
 
-  const dude = ` 🥰 `
+  console.log("first")
 
   return (
-    <>
-    <h1 className="">Hey dude! How are you doing.</h1>
-    <small>Hey, why are you looking so small {dude}  </small>
-    </>
+    <MainLayout />
+
   )
 }
 

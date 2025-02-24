@@ -56,6 +56,7 @@ const Banner = () => {
 			<div className="relative w-full h-[600px] rounded-3xl overflow-hidden shadow-2xl">
 				{bannerData.map((data, index) => (
 					<motion.div
+					key={index}
 						initial={{ opacity: 0 }}
 						animate={{ opacity: index === currentImageIndex ? 1 : 0 }}
 						transition={{ duration: 0.5 }}
