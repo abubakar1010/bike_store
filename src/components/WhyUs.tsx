@@ -39,8 +39,10 @@ const WhyUs = () => {
 	];
 
 	return (
-		<>
-			<h1 className=" text-6xl font-bold mb-36 text-center">Why Choose Us</h1>
+		<div className="mt-12">
+			<h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
+				Why Choose Us
+			</h2>
 			<div className=" lg:flex items-center justify-between gap-12">
 				<div className=" space-y-20">
 					{whyChooseUs?.slice(0, 3).map((item) => (
@@ -73,7 +75,7 @@ const WhyUs = () => {
 					))}
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 
