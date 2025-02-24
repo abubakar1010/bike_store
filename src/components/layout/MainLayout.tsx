@@ -1,54 +1,38 @@
-import { Button, Layout } from "antd";
-import { FC, useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
-import { Sidebar } from "../ui/Sidebar";
-import { logout } from "../../redux/features/auth/authSlice";
-import { useAppDispatch } from "../../redux/store/hook";
-import { toast, ToastContainer } from "react-toastify";
-import { useBoomMutation } from "../../redux/features/auth/authApi";
+import { Layout } from "antd";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
+import { Navbar } from "../Navbar";
+import { Sidebar } from "../Sidebar";
 
-const { Header, Content, Footer } = Layout;
 
-export const MainLayout: FC = () => {
-	const navigate = useNavigate();
-	const dispatch = useAppDispatch();
-	const handleLogout = () => {
-		dispatch(logout());
-		setTimeout(() => {
-			navigate("/login");
-		}, 1000);
-		toast.success("Logout successful");
-	};
+const { Content } = Layout;
 
-	const [blast] = useBoomMutation();
+export const MainLayout = () => {
+	const [collapsed, setCollapsed] = useState(true);
 
-	useEffect(() => {
-		blast(undefined);
-	}, []);
+
 	return (
 		<>
-			<Layout style={{ minHeight: "100%" }}>
-				<Sidebar />
+			<Layout className=" !min-h-screen">
+					
+					<Navbar collapsed={collapsed} setCollapsed={setCollapsed} />
 				<Layout>
-					<Header style={{ textAlign: "right", position: "sticky", top: "0" }}>
-						<Button onClick={handleLogout}>Logout</Button>
-					</Header>
-					<Content style={{ margin: "24px 16px 0" }}>
-						<div
+					
+					<Sidebar collapsed={collapsed} />
+					<Layout style={{ padding: "0 24px 24px" }}>
+						
+						<Content
 							style={{
 								padding: 24,
-								minHeight: "",
+								margin: 0,
+								minHeight: 280,
 							}}
 						>
 							<Outlet />
-						</div>
-					</Content>
-					<Footer style={{ textAlign: "center" }}>
-						Ant Design ©{new Date().getFullYear()} Created by Ant UED
-					</Footer>
+						</Content>
+					</Layout>
 				</Layout>
 			</Layout>
-			<ToastContainer />
 		</>
 	);
 };
