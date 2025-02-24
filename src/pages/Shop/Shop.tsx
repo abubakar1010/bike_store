@@ -13,6 +13,7 @@ import {
 import { IProduct } from "../Dashboard/adminDashboard/ProductManagement";
 import { ScrollRestoration } from "react-router";
 import ProductCard from "../../components/Card";
+import Slider from "rc-slider";
 type SearchProps = GetProps<typeof Input.Search>;
 const { Search } = Input;
 
@@ -22,7 +23,7 @@ const Shop = () => {
 	const [brand, setBrand] = useState("");
 	const [category, setCategory] = useState("");
 	const [availability, setAvailability] = useState("");
-	const [priceRange, setPriceRange] = useState<any>([0, 200000]);
+	const [priceRange, setPriceRange] = useState<any>([]);
 	// console.log(priceRange);
 	const queryParams = [
 		{ name: "searchTerm", value: search },
@@ -69,26 +70,35 @@ const Shop = () => {
 		setBrand("");
 		setCategory("");
 		setAvailability("");
-		setPriceRange([0, 200000]);
+		setPriceRange([]);
 		window.location.reload();
 	};
 	const onSearch: SearchProps["onSearch"] = (value) => {
 		setSearch(value);
 	};
 
+	const handleSliderChange = (value: any) => {
+		setPriceRange(value);
+	  };
+
 	return (
 		<>
 			<div className="w-[90%] md:w-[88%] mx-auto">
-				
 				<section className="my-2 md:my-6 bg-gray-100">
 					<div className="flex gap-4 flex-wrap justify-between items-center">
 						<Search
 							className="lg:basis-2/6 hover:outline-0"
 							placeholder="Search by brand, product name or category"
 							allowClear
-							enterButton="Search"
+							enterButton={
+								<button className="bg-green-500 hover:bg-green-600 text-white px-6  py-[12px] rounded-ee-4xl ">
+								  Search
+								</button>
+							  }
 							size="large"
 							onSearch={onSearch}
+							
+							
 						/>
 						<div className="flex flex-wrap items-center gap-4">
 							<Select
@@ -129,12 +139,45 @@ const Shop = () => {
 							/>
 							<Button
 								onClick={handleResetFilter}
-								type="primary"
-								className="h-10"
+								// color="green"
+								// type="primary"
+								className=" !py-[8px] !h-full !bg-green-500 !text-white hover:!border-green-300 "
 							>
 								Clear Filter
 							</Button>
 						</div>
+					</div>
+
+					<div className="p-6 mt-4 bg-white shadow-md rounded-md z-30">
+						<Slider
+							range
+							min={0}
+							max={200000}
+							value={priceRange}
+							onChange={handleSliderChange}
+							trackStyle={[{ backgroundColor: "#42e529", height: 8 }]}
+							handleStyle={[
+								{
+									borderColor: "#8de529",
+									height: 24,
+									width: 24,
+									marginTop: -8,
+								},
+								{
+									borderColor: "#8de529",
+									height: 24,
+									width: 24,
+									marginTop: -8,
+								},
+							]}
+							railStyle={{ backgroundColor: "#e5e7eb", height: 8 }}
+						/>
+
+						<p className="mt-3 text-gray-600">
+							Price Range:{" "}
+							<span className="font-semibold">${priceRange[0]}</span> -{" "}
+							<span className="font-semibold">${priceRange[1]}</span>
+						</p>
 					</div>
 
 					{/* product productds  */}

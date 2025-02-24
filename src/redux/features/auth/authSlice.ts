@@ -7,6 +7,7 @@ export type TUSer = {
 	name: string;
 	email: string;
 	role: string;
+	status: string
 	iat: number;
 	exp: number;
 };
