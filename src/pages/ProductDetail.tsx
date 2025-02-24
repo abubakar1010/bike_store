@@ -44,7 +44,7 @@ const ProductDetails = () => {
 							"https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 						} // Assuming `car.image` contains the image URL
 						alt={`${car.brand} ${car.model}`}
-						className="w-full h-64 md:h-full object-cover rounded-lg shadow-md"
+						className="w-full h-64 md:h-96 object-cover rounded-lg shadow-md"
 					/>
 				</div>
 
