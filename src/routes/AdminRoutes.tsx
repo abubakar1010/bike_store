@@ -4,6 +4,8 @@ import OrdersManagement from "../pages/Dashboard/adminDashboard/OrderManagement"
 import ProductManagement from "../pages/Dashboard/adminDashboard/ProductManagement";
 import UserManagement from "../pages/Dashboard/adminDashboard/UserManagement";
 import Dashboard from "../pages/Dashboard/userDashboard/Dashboard";
+import MyOrders from "../pages/Dashboard/userDashboard/MyOrders";
+import MyProfile from "../pages/Dashboard/userDashboard/Profile";
 
 export const adminPaths = [
 	{
@@ -36,4 +38,15 @@ export const adminPaths = [
 		path: "edit-product/:id",
 		element: <EditProduct />,
 	},
+	{
+		name: "My Order",
+		path: "my-order",
+		element: <MyOrders />,
+	},
+
+	{
+		name: "Profile",
+		path: "profile",
+		element: <MyProfile />,
+	}
 ];

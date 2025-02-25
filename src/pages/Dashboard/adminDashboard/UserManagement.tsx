@@ -90,11 +90,11 @@ const UserManagement = () => {
 									<td className="px-6 py-4 whitespace-nowrap">
 										<div
 											className={cn("text-sm", {
-												"text-blue-500": !user?.isBlocked,
-												"text-rose-500": user?.isBlocked,
+												"text-blue-500": user?.status === "active",
+												"text-rose-500": user?.status === "inactive",
 											})}
 										>
-											{user?.isBlocked ? "Blocked" : "Active"}
+											{user?.status === "inactive" ? "Inactive" : "Active"}
 										</div>
 									</td>
 									<td className="px-6 py-4 whitespace-nowrap">
@@ -103,7 +103,7 @@ const UserManagement = () => {
 											style={{ width: 120 }}
 											onChange={(value) => handleChange(value, user?._id)}
 											options={[
-												{ value: "Active", label: "active" },
+												{ value: "active", label: "Active" },
 												{ value: "inactive", label: "Inactive" },
 											]}
 										/>

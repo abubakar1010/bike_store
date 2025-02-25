@@ -11,7 +11,7 @@ import { logout } from "../features/auth/authSlice";
 import { RootState } from "../store/store";
 
 const baseQuery = fetchBaseQuery({
-	baseUrl: "http://localhost:9000/api",
+	baseUrl: "https://bike-store-server-ebon.vercel.app/api",
 	credentials: "include",
 	prepareHeaders: (headers, { getState }) => {
 		const token = (getState() as RootState).auth.token;

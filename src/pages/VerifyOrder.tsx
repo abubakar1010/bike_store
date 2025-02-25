@@ -3,6 +3,8 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useVerifyOrderQuery } from "../redux/features/order/orderApi";
 import Button from "../components/ui/shared/Button";
 import Loading from "../components/ui/Loading";
+import { useAppSelector } from "../redux/store/hook";
+import { selectRole } from "../redux/features/auth/authSlice";
 
 interface OrderData {
 	id: number;
@@ -39,6 +41,9 @@ interface OrderData {
 }
 
 export default function VerifyOrder() {
+
+	const role = useAppSelector(selectRole)
+
 	const [searchParams] = useSearchParams();
 
 	const { isLoading, data } = useVerifyOrderQuery(
@@ -138,7 +143,7 @@ export default function VerifyOrder() {
 						)}
 					</div>
 					<div className="mt-4">
-						<Link to="/customer/my-order">
+						<Link to={`/${role}/my-order`}>
 							<Button text="View Orders" />
 						</Link>
 					</div>

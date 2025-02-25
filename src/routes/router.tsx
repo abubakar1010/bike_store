@@ -11,11 +11,14 @@ import About from "../pages/About";
 import Shop from "../pages/Shop/Shop";
 import ProductDetails from "../pages/ProductDetail";
 import CheckoutPage from "../components/Checkout";
+import VerifyOrder from "../pages/VerifyOrder";
+import Error from "../pages/Error";
 
 export const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <App />,
+		errorElement: <Error />,
 		children: [
 			{
 				index: true,
@@ -46,6 +49,10 @@ export const router = createBrowserRouter([
 	{
 		path: "/register",
 		element: <Register />,
+	},
+	{
+		path: "verify-order",
+		element: <VerifyOrder />,
 	},
 	{
 		path: "/admin",

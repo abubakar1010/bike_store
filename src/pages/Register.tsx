@@ -1,16 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Typography } from "antd";
 import { FieldValues } from "react-hook-form";
 import { useCreateUserMutation } from "../redux/features/auth/authApi";
-import { setUser, TUSer } from "../redux/features/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../redux/store/hook";
 import { toast } from "react-toastify";
-import { decodeToken } from "../utils/DecodeToken";
 import { FormContainer } from "../components/ui/form/FormContainer";
 import { FormInput } from "../components/ui/form/FormInput";
 
 const Register = () => {
-	const dispatch = useAppDispatch();
 	const { Title } = Typography;
 
 	const [createUser] = useCreateUserMutation();
@@ -28,7 +25,7 @@ const Register = () => {
 
 			toast.success(`${res.message}`);
 			navigate(`/login`);
-		} catch (err: unknown) {
+		} catch (err: any) {
 			console.log(err)
 			toast.error(`${err.data.message}`);
 		}

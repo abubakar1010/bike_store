@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Typography } from "antd";
 import { FieldValues } from "react-hook-form";
 import { useLoginMutation } from "../redux/features/auth/authApi";
@@ -35,7 +36,7 @@ const Login = () => {
 			dispatch(setUser({ user, token: res.data.accessToken }));
 			toast.success("User login successful");
 			navigate(`/`);
-		} catch (err: unknown) {
+		} catch (err: any) {
 			// console.log(err)
 			toast.error(`${err?.data?.message}`);
 		}

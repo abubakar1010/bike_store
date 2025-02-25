@@ -96,7 +96,7 @@ const ProductManagement = () => {
 			<div className="flex gap-4 flex-wrap justify-between items-center">
 				<Search
 					className="lg:basis-2/6 hover:outline-0"
-					placeholder="Search by brand, car name or category"
+					placeholder="Search by brand, bike name or category"
 					allowClear
 					enterButton={
 						<button className="bg-green-500 hover:bg-green-600 text-white px-6  py-[12px] rounded-ee-4xl ">

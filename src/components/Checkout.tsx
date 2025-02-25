@@ -30,13 +30,13 @@ const CheckoutPage = () => {
     );
   }
 
-  // Car data from the response
-  const car = response?.data;
+  // product data from the response
+  const product = response?.data;
 
-  const totalPrice = quantity * car.price;
+  const totalPrice = quantity * product.price;
 
   const handleQuantityChange = (value: number) => {
-    if (car.inStock) {
+    if (product.inStock) {
       setQuantity(value);
     }
   };
@@ -44,8 +44,8 @@ const CheckoutPage = () => {
   const handlePayment = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    if (quantity > car.quantity) {
-      toast.error(`Stock has only ${car.quantity} Item`);
+    if (quantity > product.quantity) {
+      toast.error(`Stock has only ${product.quantity} Item`);
       return; 
     }
 
@@ -83,16 +83,16 @@ const CheckoutPage = () => {
               Checkout
             </h2>
 
-            {/* car Details */}
+            {/* product Details */}
             <div className="mb-4">
               <p>
-                Name: {car.brand} {car.model}
+                Name: {product.brand} {product.model}
               </p>
               <p>
                 Price:{" "}
-                <span className="text-primary font-semibold">${car.price}</span>
+                <span className="text-primary font-semibold">${product.price}</span>
               </p>
-              <p>Stock: {car.inStock ? "In Stock" : "Out of Stock"}</p>
+              <p>Stock: {product.inStock ? "In Stock" : "Out of Stock"}</p>
             </div>
 
             {/* Order Form */}

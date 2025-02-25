@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Navbar } from "../Navbar";
 import { Sidebar } from "../Sidebar";
+import Footer from "../Footer";
 
 
 const { Content } = Layout;
@@ -30,6 +31,7 @@ export const MainLayout = () => {
 						>
 							<Outlet />
 						</Content>
+						<Footer />
 					</Layout>
 				</Layout>
 			</Layout>

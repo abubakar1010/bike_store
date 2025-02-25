@@ -22,13 +22,13 @@ const ProductDetails = () => {
 		);
 	}
 
-	// Car data from the response
-	const car = response?.data;
+	// product data from the response
+	const product = response?.data;
 
-	if (!car) {
+	if (!product) {
 		return (
 			<h3 className="text-main font-bold text-2xl flex items-center justify-center h-screen">
-				Car not found!
+				product not found!
 			</h3>
 		);
 	}
@@ -40,10 +40,10 @@ const ProductDetails = () => {
 				<div>
 					<img
 						src={
-							car?.image ||
+							product?.image ||
 							"https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-						} // Assuming `car.image` contains the image URL
-						alt={`${car.brand} ${car.model}`}
+						} // Assuming `product.image` contains the image URL
+						alt={`${product.brand} ${product.model}`}
 						className="w-full h-64 md:h-96 object-cover rounded-lg shadow-md"
 					/>
 				</div>
@@ -51,12 +51,12 @@ const ProductDetails = () => {
 				{/* Details Section */}
 				<div className="flex flex-col justify-center gap-4 mt-7">
 					<h3 className="text-primary text-2xl md:text-3xl font-bold">
-						{car.brand} {car.model}
+						{product.brand} {product.model}
 					</h3>
-					<p>{car.description}</p>
+					<p>{product.description}</p>
 					<div className="flex flex-col text-sm gap-1">
 						<p>
-							<span className="font-semibold">Brand:</span> {car.brand}
+							<span className="font-semibold">Brand:</span> {product.brand}
 						</p>
 						<p>
 							<span className="font-semibold">Model:</span> Sv8K
@@ -65,18 +65,18 @@ const ProductDetails = () => {
 							<span className="font-semibold">Year:</span> 2003
 						</p>
 						<p>
-							<span className="font-semibold">Category:</span> {car.category}
+							<span className="font-semibold">Category:</span> {product.category}
 						</p>
 						<p>
 							<span className="font-semibold">Price:</span> $
-							{car.price.toLocaleString()}
+							{product.price.toLocaleString()}
 						</p>
 						<p>
 							<span className="font-semibold">Description:</span>{" "}
-							{car.description}
+							{product.description}
 						</p>
 						<p>
-							<span className="font-semibold">Stock:</span> {car.quantity}
+							<span className="font-semibold">Stock:</span> {product.quantity}
 						</p>
 					</div>
 					<Button

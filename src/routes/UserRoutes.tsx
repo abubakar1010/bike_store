@@ -1,6 +1,5 @@
 import MyOrders from "../pages/Dashboard/userDashboard/MyOrders";
 import MyProfile from "../pages/Dashboard/userDashboard/Profile";
-import VerifyOrder from "../pages/VerifyOrder";
 
 export const userPath = [
 	{
@@ -13,11 +12,6 @@ export const userPath = [
 		name: "Profile",
 		path: "profile",
 		element: <MyProfile />,
-	},
-	{
-		name: "",
-		path: "verify-order",
-		element: <VerifyOrder />,
-	},
+	}
 	
 ];

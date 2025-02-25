@@ -38,7 +38,7 @@ const AboutBanner = () => {
           {/* <Button text="Contact us" /> */}
         </motion.div>
 
-        {/* Car Image Carousel */}
+        {/* Bike Image Bikeousel */}
         <motion.div
           className="lg:w-1/2 w-full mt-12 lg:mt-0"
           initial={{ opacity: 0, x: 100 }}
@@ -48,7 +48,7 @@ const AboutBanner = () => {
           <div className="relative w-full h-[400px] rounded-3xl overflow-hidden shadow-2xl">
             <img
               src="https://images.unsplash.com/photo-1609204276470-d22da7d40a3c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Luxury car"
+              alt="Luxury Bike"
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black opacity-40" />

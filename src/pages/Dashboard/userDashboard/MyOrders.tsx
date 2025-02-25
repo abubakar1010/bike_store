@@ -42,7 +42,7 @@ const MyOrders = () => {
 			<div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
 				<div className="px-6 py-4 border-b border-gray-200">
 					<h2 className="text-lg font-semibold text-gray-800">
-						My Ordered Cars
+						My Ordered products
 					</h2>
 				</div>
 				<div className="overflow-x-auto">
@@ -53,7 +53,7 @@ const MyOrders = () => {
 									Order Time
 								</th>
 								<th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-									Car Details
+									product Details
 								</th>
 								<th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 									Customer Info
@@ -82,10 +82,10 @@ const MyOrders = () => {
 									</td>
 									<td className="px-6 py-4 whitespace-nowrap">
 										<div className="text-sm text-gray-900">
-											{order?.car?.brand} {order?.car?.model}
+											{order?.product?.brand} {order?.product?.model}
 										</div>
 										<div className="text-sm text-gray-500">
-											Year: {order?.car?.year}
+											Year: {order?.product?.year}
 										</div>
 									</td>
 									<td className="px-6 py-4 whitespace-nowrap">
