@@ -64,7 +64,7 @@ const ProductManagement = () => {
 	}
 	const products = response?.data?.result;
 
-	console.log(response?.data?.result)
+	console.log(response?.data?.result);
 
 	console.log(search, model, brand, category, availability);
 
@@ -98,7 +98,11 @@ const ProductManagement = () => {
 					className="lg:basis-2/6 hover:outline-0"
 					placeholder="Search by brand, car name or category"
 					allowClear
-					enterButton="Search"
+					enterButton={
+						<button className="bg-green-500 hover:bg-green-600 text-white px-6  py-[12px] rounded-ee-4xl ">
+							Search
+						</button>
+					}
 					size="large"
 					onSearch={onSearch}
 				/>
@@ -139,7 +143,10 @@ const ProductManagement = () => {
 							value: option.value,
 						}))}
 					/>
-					<Button onClick={handleResetFilter} type="primary" className="h-10">
+					<Button
+						onClick={handleResetFilter}
+						className=" !py-[8px] !h-full !bg-green-500 !text-white hover:!border-green-300 "
+					>
 						Clear Filter
 					</Button>
 				</div>

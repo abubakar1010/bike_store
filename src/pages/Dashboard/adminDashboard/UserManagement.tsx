@@ -13,7 +13,7 @@ const UserManagement = () => {
 	const handleChange = async (value: string, id: string) => {
 		const payload = {
 			id: id,
-			status: value === "Block",
+			status: value === "active",
 		};
 		try {
 			const res = await updateUserStatus(payload).unwrap();
@@ -99,12 +99,12 @@ const UserManagement = () => {
 									</td>
 									<td className="px-6 py-4 whitespace-nowrap">
 										<Select
-											defaultValue={user?.isBlocked ? "Blocked" : "Active"}
+											defaultValue={user?.status}
 											style={{ width: 120 }}
 											onChange={(value) => handleChange(value, user?._id)}
 											options={[
-												{ value: "Active", label: "Active" },
-												{ value: "Block", label: "Block" },
+												{ value: "Active", label: "active" },
+												{ value: "inactive", label: "Inactive" },
 											]}
 										/>
 									</td>

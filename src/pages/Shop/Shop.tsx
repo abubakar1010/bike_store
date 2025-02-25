@@ -139,8 +139,6 @@ const Shop = () => {
 							/>
 							<Button
 								onClick={handleResetFilter}
-								// color="green"
-								// type="primary"
 								className=" !py-[8px] !h-full !bg-green-500 !text-white hover:!border-green-300 "
 							>
 								Clear Filter
